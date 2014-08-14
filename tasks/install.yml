@@ -61,21 +61,6 @@
   sudo: true
   command: service mysql start
 
-#- name: Update MySQL root password
-#  ignore_errors: true
-#  command: 'mysqladmin -u root password {{ mysql_root_password }}'
-
-#- name: Update MySQL root password
-#  ignore_errors: true
-#  mysql_user: >
-#    name=root
-#    password={{ mysql_root_password }}
-#    host={{ item }}
-#  with_items:
-#          - "{{ ansible_hostname }}"
-#          - 127.0.0.1
-#          - localhost
-
 - name: update mysql root password for all root accounts
   mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
   with_items:
