@@ -10,8 +10,7 @@
 - name: Install percona database server
   action: apt pkg={{ item }} state=latest
   with_items:
-          - percona-server-server-5.5
-          - percona-server-client-5.5
+          - "{{ percona_package }}"
           - percona-toolkit
           - percona-xtrabackup
           - python-mysqldb
@@ -46,7 +45,7 @@
   notify:
           - restart percona
 
-- name: Initialize the datadir if it's not already populated
+- name: Initialize the datadir if not already populated
   sudo: true
   command: mysql_install_db --datadir={{ mysql_datadir }} --user=mysql
 
