@@ -17,7 +17,9 @@
 
 - name: Write custom server configuration
   template: src=etc_mysql_my.cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0600
-  notify: restart percona
+
+- name: restart percona
+  action: service name=mysql state=restarted
 
 - name: update mysql root password for all root accounts
   mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
