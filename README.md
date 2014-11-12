@@ -27,6 +27,23 @@ Define port and bind address for MySQL connections
 
 Various other settings are available in defaults/main.yml
 
+## Cluster configuration
+If using a cluster define at least `wsrep_cluster_name` and `wsrep_cluster_hosts`(a list of hosts) and optionally other settings:
+
+  wsrep_slave_threads: 2
+  wsrep_sst_method: rsync
+
+Additionally one node should be set with `percona_master_node` to true. This is because a percona cluster must be started with the
+bootsrap-pxc command on its first start. I set the percona_master_node will attempt to start with the bootstrap when its package is
+installed
+
+These are optional variables that default to undefined
+
+  wsrep_node_name
+  wsrep_notify_cmd
+  wsrep_sst_receive_address
+  wsrep_sst_auth
+
 ## Dependencies
 
 None.
