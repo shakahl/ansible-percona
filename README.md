@@ -34,8 +34,8 @@ If using a cluster define at least `wsrep_cluster_name` and `wsrep_cluster_hosts
   wsrep_sst_method: rsync
 
 Additionally one node should be set with `percona_master_node` to true. This is because a percona cluster must be started with the
-bootsrap-pxc command on its first start. I set the percona_master_node will attempt to start with the bootstrap when its package is
-installed
+bootsrap-pxc command on its first start. The percona_master_node will attempt to start with the bootstrap when its package is
+installed and should be the first node in a cluster to run.
 
 These are optional variables that default to undefined
 
