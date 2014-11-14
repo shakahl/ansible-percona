@@ -32,9 +32,12 @@
   command: /etc/init.d/mysql bootstrap-pxc
   when: bootstrapping
 
+- name: Copy .my.cnf file into the root home folder
+  template: src=root-my-cnf.j2 dest=~/.my.cnf owner=root mode=0600
+
 - meta: flush_handlers  # Restart now before attempting to set root password
 - name: update mysql root password for all root accounts
-  mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
+  mysql_user: name=root host={{ item }} password={{ mysql_root_password }} check_implicit_admin=yes
   with_items:
    - "{{ ansible_hostname }}"
    - 127.0.0.1
@@ -43,15 +46,12 @@
   when: ansible_hostname != 'localhost'
 
 - name: update mysql root password for all root accounts
-  mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
+  mysql_user: name=root host={{ item }} password={{ mysql_root_password }} check_implicit_admin=yes
   with_items:
    - 127.0.0.1
    - ::1
    - localhost
   when: ansible_hostname == 'localhost'
-
-- name: Copy .my.cnf file into the root home folder
-  template: src=root-my-cnf.j2 dest=~/.my.cnf owner=root mode=0600
 
 - name: Ensure anonymous users are not in the database
   mysql_user: name='' host={{ item }} state=absent
