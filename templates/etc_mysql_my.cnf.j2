@@ -97,11 +97,12 @@ innodb_log_file_size = {{ mysql_innodb_log_file_size }}
 # ** Security Features
 # Read the manual, too, if you want chroot!
 # chroot = /var/lib/mysql/
-#
-# For generating SSL certificates I recommend the OpenSSL GUI "tinyca".
-# ssl-ca=/etc/mysql/cacert.pem
-# ssl-cert=/etc/mysql/server-cert.pem
-# ssl-key=/etc/mysql/server-key.pem
+
+{% if mysql_ssl_key is defined %}
+ssl-ca=/etc/mysql/cacert.pem
+ssl-cert=/etc/mysql/server-cert.pem
+ssl-key=/etc/mysql/server-key.pem
+{% endif %}
 
 character_set_server = {{ mysql_character_set_server }}
 collation_server = {{ mysql_collation_server }}
