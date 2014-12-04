@@ -66,6 +66,8 @@ query_cache_limit       = {{ mysql_query_cache_limit }}
 query_cache_size        = {{ mysql_query_cache_size }}
 
 # ** Logging and Replication
+log_error = /var/log/mysql/error.log
+log_warnings = 2
 #general_log_file        = /var/log/mysql/mysql.log
 #general_log             = 1
 #
