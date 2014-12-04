@@ -101,9 +101,9 @@ innodb_log_file_size = {{ mysql_innodb_log_file_size }}
 # chroot = /var/lib/mysql/
 
 {% if mysql_ssl_key is defined %}
-ssl-ca=/etc/mysql/cacert.pem
-ssl-cert=/etc/mysql/server-cert.pem
-ssl-key=/etc/mysql/server-key.pem
+ssl-ca = {{mysql_ssl_ca}}
+ssl-cert = {{mysql_ssl_cert}}
+ssl-key = {{mysql_ssl_key}}
 {% endif %}
 
 character_set_server = {{ mysql_character_set_server }}
