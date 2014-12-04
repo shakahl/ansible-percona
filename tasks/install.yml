@@ -25,6 +25,27 @@
     - restart percona
     - wait for mysql port
 
+- name: Copy SSL ca
+  copy: dest={{mysql_ssl_ca}} src={{mysql_ssl_ca_src}}
+  when: mysql_ssl_ca_src is defined
+  notify:
+    - restart percona
+    - wait for mysql port
+
+- name: Copy SSL cert
+  copy: dest={{mysql_ssl_cert}} src={{mysql_ssl_cert_src}}
+  when: mysql_ssl_cert_src is defined
+  notify:
+    - restart percona
+    - wait for mysql port
+
+- name: Copy SSL key
+  copy: dest={{mysql_ssl_key}} src={{mysql_ssl_key_src}}
+  when: mysql_ssl_key_src is defined
+  notify:
+    - restart percona
+    - wait for mysql port
+
 - name: Detect bootstrapping
   set_fact:
     bootstrapping: true

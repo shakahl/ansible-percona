@@ -44,6 +44,20 @@ These are optional variables that default to undefined
   wsrep_sst_receive_address
   wsrep_sst_auth
 
+## SSL Configuration
+
+If mysql_ssl_key is defined then ssl is enabled and all of the below ssl variables need to be defined.
+
+- mysql_ssl_ca
+- mysql_ssl_cert
+- mysql_ssl_key
+
+Optionally to copy in the appropriate certs define these variables
+
+- mysql_ssl_ca_src
+- mysql_ssl_cert_src
+- mysql_ssl_key_src
+
 ## Dependencies
 
 None.
