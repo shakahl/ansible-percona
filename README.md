@@ -45,6 +45,8 @@ These are optional variables that default to undefined
   wsrep_sst_auth
 
 ## SSL Configuration
+The role can be setup to enable ssl for mysql. SSL for intra cluster communication is not yet implemented, more information on that configuration
+is available [here](http://www.percona.com/blog/2013/05/03/percona-xtradb-cluster-for-mysql-and-encrypted-galera-replication/)
 
 If mysql_ssl_key is defined then ssl is enabled and all of the below ssl variables need to be defined.
 
