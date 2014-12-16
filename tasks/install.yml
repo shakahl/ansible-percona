@@ -17,34 +17,29 @@
   register: install_result
   notify:
     - restart percona
-    - wait for mysql port
 
 - name: Write custom server configuration
   template: src=etc_mysql_my.cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0600
   notify:
     - restart percona
-    - wait for mysql port
 
 - name: Copy SSL ca
   copy: dest={{mysql_ssl_ca}} src={{mysql_ssl_ca_src}}
   when: mysql_ssl_ca_src is defined
   notify:
     - restart percona
-    - wait for mysql port
 
 - name: Copy SSL cert
   copy: dest={{mysql_ssl_cert}} src={{mysql_ssl_cert_src}} owner=root group=mysql mode=0444
   when: mysql_ssl_cert_src is defined
   notify:
     - restart percona
-    - wait for mysql port
 
 - name: Copy SSL key
   copy: dest={{mysql_ssl_key}} src={{mysql_ssl_key_src}} owner=root group=mysql mode=0440
   when: mysql_ssl_key_src is defined
   notify:
     - restart percona
-    - wait for mysql port
 
 - name: Detect bootstrapping
   set_fact:
@@ -85,3 +80,9 @@
 - name: remove test database
   mysql_db: name=test state=absent
 
+# Handlers were already flushed above
+- name: Enable percona
+  action: service name=mysql state=started enabled=yes
+
+- name: wait for mysql port
+  wait_for: port={{mysql_port}} state=started timeout=30
