@@ -18,6 +18,10 @@
   notify:
     - restart percona
 
+- name: Make sure mysql did not start before it is configured
+  service: name=mysql state=stopped
+  when: install_result|changed
+
 - name: Write custom server configuration
   template: src=etc_mysql_my.cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0600
   notify:
@@ -82,7 +86,7 @@
 
 # Handlers were already flushed above
 - name: Enable percona
-  action: service name=mysql state=started enabled=yes
+  service: name=mysql state=started enabled=yes
 
 - name: wait for mysql port
   wait_for: port={{mysql_port}} state=started timeout=30
