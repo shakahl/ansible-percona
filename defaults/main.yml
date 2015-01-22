@@ -8,6 +8,7 @@ mysql_language: '/usr/share/mysql/'
 mysql_datadir: '/var/lib/mysql'
 
 # Percona settings
+setup_percona_repo: true
 percona_package: percona-xtradb-cluster-56
 
 # Cluster settings
