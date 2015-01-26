@@ -58,6 +58,10 @@
   template: src=root-my-cnf.j2 dest=/root/.my.cnf owner=root mode=0600
 
 - meta: flush_handlers  # Restart now before attempting to set root password
+
+- name: Enable percona
+  service: name=mysql state=started enabled=yes
+
 - name: update mysql root password for all root accounts
   mysql_user: name=root host={{ item }} password={{ mysql_root_password }} check_implicit_admin=yes
   with_items:
@@ -83,10 +87,6 @@
 
 - name: remove test database
   mysql_db: name=test state=absent
-
-# Handlers were already flushed above
-- name: Enable percona
-  service: name=mysql state=started enabled=yes
 
 - name: wait for mysql port
   wait_for: port={{mysql_port}} state=started timeout=30
