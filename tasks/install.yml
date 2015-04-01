@@ -59,8 +59,19 @@
 
 - meta: flush_handlers  # Restart now before attempting to set root password
 
+- name: Detect if this is a systemd based system
+  command: cat /proc/1/comm
+  register: init
+- set_fact: use_systemd=True
+  when: init.stdout == 'systemd'
+- set_fact: use_systemd=False
+  when: init.stdout != 'systemd'
+
 - name: Enable percona
   service: name=mysql state=started enabled=yes
+
+- command: systemctl daemon-reload
+  when: use_systemd
 
 - name: update mysql root password for all root accounts
   mysql_user: name=root host={{ item }} password={{ mysql_root_password }} check_implicit_admin=yes
