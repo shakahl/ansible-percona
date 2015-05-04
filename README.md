@@ -70,7 +70,7 @@ None.
 	- hosts: all
 	  sudo: true
 	  roles:
-		  - tkuhlman.ansible-percona
+		  - tkuhlman.percona
 
 ## License
 
