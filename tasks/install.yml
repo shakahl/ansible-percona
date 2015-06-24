@@ -3,7 +3,7 @@
   action: apt pkg={{ item }} state=absent
   with_items:
           - mysql-server-core-5.5
-          - mysql-client 
+          - mysql-client
           - mysql-client-5.5
           - mysql-client-core-5.5
 
