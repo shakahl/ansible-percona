@@ -1,4 +1,4 @@
-# file: mysql/defaults/main.yml
+# file: ansible-percona/defaults/main.yml
 
 # Basic settings
 mysql_root_password: 'pass'
@@ -7,9 +7,35 @@ mysql_bind_address: "0.0.0.0"
 mysql_language: '/usr/share/mysql/'
 mysql_datadir: '/var/lib/mysql'
 
+# Databases.
+mysql_databases: []
+#   - name: example
+#     collation: utf8_general_ci
+#     encoding: utf8
+
+# Users.
+mysql_users: []
+#   - name: example
+#     host: 127.0.0.1
+#     password: secret
+#     priv: *.*:USAGE
+#     append_privs: false
+
+# These packages will be removed
+mysql_packages_to_remove:
+  - mysql-*
+
 # Percona settings
 setup_percona_repo: true
-percona_package: percona-xtradb-cluster-56
+percona_packages:
+  - percona-xtradb-cluster-56
+  - percona-toolkit
+  - percona-xtrabackup
+  - python-mysqldb
+
+mysql_config_template_files:
+  - { src: 'etc_mysql_my.cnf.j2', dest: '/etc/mysql/my.cnf' }
+  - { src: 'etc_mysql_conf_d_custom.cnf.j2', dest: '/etc/mysql/conf.d/custom.conf' }
 
 # Cluster settings
 wsrep_slave_threads: 2
@@ -42,3 +68,5 @@ mysql_innodb_flush_log_at_trx_commit: 1
 mysql_innodb_lock_wait_timeout: 50
 mysql_innodb_log_buffer_size: '1M'
 mysql_innodb_log_file_size: '5M'
+
+mysql_custom_config: ''

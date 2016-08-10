@@ -1,4 +1,11 @@
 ---
+
 - include: repo.yml
   when: setup_percona_repo
+
 - include: install.yml
+
+- include: databases.yml
+
+- include: users.yml
+
