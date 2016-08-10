@@ -1,4 +1,5 @@
 ---
+
 - name: restart percona
   service: name=mysql state=restarted
   when: not bootstrapping  # skip the restart if a bootstrap is happening

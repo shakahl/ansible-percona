@@ -1,9 +1,13 @@
 ---
 
 galaxy_info:
-  author: "Soma Szélpál"
+  author: Soma Szélpál
+  description: -
+  company: -
+  issue_tracker_url: https://github.com/shakahl/ansible-percona/issues
   license: MIT
   min_ansible_version: 1.4
+  github_branch: master
   platforms:
     - name: Ubuntu
       versions:
@@ -19,6 +23,7 @@ galaxy_info:
         - jessie
         - wheezy
         - squeeze
-  categories:
+  galaxy_tags:
     - database
-dependecies: []
+    - mysql
+dependencies: []

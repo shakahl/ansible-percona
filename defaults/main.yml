@@ -1,4 +1,4 @@
-# file: ansible-percona/defaults/main.yml
+
 
 # Basic settings
 mysql_root_password: 'pass'
