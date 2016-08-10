@@ -1,4 +1,5 @@
-# Ansible Role: Percona
+
+# shakahl.ansible-percona
 
 Ansible playbook to install Percona XtraDB MySQL Cluster on Debian/Ubuntu servers
 
@@ -11,7 +12,7 @@ None.
 Available variables are listed below with its default values.
 
 	mysql_root_password: reallylongpassword
-  percona_package: percona-xtradb-cluster-56
+	percona_package: percona-xtradb-cluster-56
 
 Define the MySQL root password, this password will be used to create a **/root/.my.cnf** to allow root mysql connections without password
 
@@ -70,7 +71,7 @@ None.
 	- hosts: all
 	  sudo: true
 	  roles:
-		  - tkuhlman.percona
+		  - shakahl.ansible-percona
 
 ## License
 

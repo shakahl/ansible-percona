@@ -1,17 +1,22 @@
 ---
+
 galaxy_info:
-  author: "Tim Kuhlman"
-  company: "HP"
-  license: ISC
+  author: "Soma Szélpál"
+  license: MIT
   min_ansible_version: 1.4
   platforms:
     - name: Ubuntu
       versions:
+        - xenial
+        - wily
+        - vivid
+        - utopic
         - trusty
         - saucy
         - precise
     - name: Debian
       versions:
+        - jessie
         - wheezy
         - squeeze
   categories:
