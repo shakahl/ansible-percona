@@ -1,7 +1,7 @@
 ---
 
 galaxy_info:
-  author: Soma Szélpál
+  author: shakahl
   description: Ansible role for installing Percona MySQL Xtradb server
   issue_tracker_url: https://github.com/shakahl/ansible-percona/issues
   license: MIT

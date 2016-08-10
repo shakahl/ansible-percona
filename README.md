@@ -1,5 +1,5 @@
 
-# shakahl.ansible-percona
+# shakahl.percona
 
 Ansible playbook to install Percona XtraDB MySQL Cluster on Debian/Ubuntu servers
 
