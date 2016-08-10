@@ -4,7 +4,7 @@
    "description": "Ansible role for installing Percona MySQL Xtradb server",
    "author": "Soma Szelpal <szelpalsoma@gmail.com>",
    "bugs": {
-      "url": "https://github.com/nodejitsu/browsenpm.org/issues"
+      "url": "https://github.com/shakahl/ansible-percona/issues"
    },
    "keywords": [
       "database"
