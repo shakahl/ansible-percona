@@ -1,13 +1,13 @@
 {
-   "name":"shakahl.ansible-percona",
-   "version":"0.0.0",
-   "description":"Ansible role for installing Percona MySQL Xtradb server",
-   "author":"Soma Szelpal <szelpalsoma@gmail.com>",
-   "bugs":{
-      "url":"https://github.com/nodejitsu/browsenpm.org/issues"
+   "name": "shakahl.ansible-percona",
+   "version": "0.1.0",
+   "description": "Ansible role for installing Percona MySQL Xtradb server",
+   "author": "Soma Szelpal <szelpalsoma@gmail.com>",
+   "bugs": {
+      "url": "https://github.com/nodejitsu/browsenpm.org/issues"
    },
-   "keywords":[
+   "keywords": [
       "database"
    ],
-   "license":"MIT"
+   "license": "MIT"
 }
