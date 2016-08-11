@@ -38,6 +38,9 @@
   notify:
     - restart percona
 
+- stat: path=/etc/shorewall/rules
+  register: shorewall_rules
+
 - name: Detect bootstrapping
   set_fact:
     bootstrapping: true
@@ -82,6 +85,21 @@
    - ::1
    - localhost
   when: ansible_hostname == 'localhost'
+
+- stat: path=/etc/mysql/.ansible_udf_percona_toolkit_installed
+  register: udf_percona_toolkit_installed
+
+- name: Copy udf_percona_toolkit.sql to remote server
+  copy: src=udf_percona_toolkit.sql dest=/tmp/
+  when: udf_percona_toolkit_installed.stat.exists == False
+
+- name: Installing percona udf toolkit
+  mysql_db: state=import name=all target=/tmp/udf_percona_toolkit.sql
+  when: udf_percona_toolkit_installed.stat.exists == False
+
+- name: Writing udf percona-toolkit configuration marker file
+  file: path=/etc/mysql/.ansible_udf_percona_toolkit_installed state=touch
+  when: udf_percona_toolkit_installed.stat.exists == False
 
 - name: Ensure anonymous users are not in the database
   mysql_user: name='' host={{ item }} state=absent

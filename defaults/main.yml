@@ -23,7 +23,8 @@ mysql_users: []
 
 # These packages will be removed
 mysql_packages_to_remove:
-  - mysql-*
+  - mysql-server-*
+  - mysql-client-*
 
 # Percona settings
 setup_percona_repo: true
