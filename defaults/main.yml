@@ -29,7 +29,7 @@ mysql_packages_to_remove:
 # Percona settings
 setup_percona_repo: true
 percona_packages:
-  - percona-xtradb-cluster-56
+  - percona-xtradb-cluster-57
   - percona-toolkit
   - percona-xtrabackup
   - python-mysqldb
