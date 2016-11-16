@@ -5,7 +5,7 @@ Ansible playbook to install Percona XtraDB MySQL Cluster on Debian/Ubuntu server
 
 ## Requirements
 
-None.
+Ansible 2.2
 
 ## Role Variables
 

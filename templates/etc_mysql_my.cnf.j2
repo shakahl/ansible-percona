@@ -32,6 +32,9 @@ skip-external-locking
 binlog_format                  = ROW
 wsrep_provider                 = /usr/lib/libgalera_smm.so
 wsrep_cluster_address          = gcomm://{{ wsrep_cluster_hosts|join(',') }}
+{% if wsrep_node_address is defined %}
+wsrep_node_address             = {{ wsrep_node_address }}
+{% endif %}
 wsrep_slave_threads            = {{ wsrep_slave_threads }}
 wsrep_cluster_name             = {{ wsrep_cluster_name }}
 wsrep_sst_method               = {{wsrep_sst_method}}

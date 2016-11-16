@@ -1,4 +1,5 @@
 ---
+
 - name: Ensure MySQL server is uninstalled
   action: apt pkg={{ item }} state=absent
   with_items: "{{ mysql_packages_to_remove }}"

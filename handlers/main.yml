@@ -1,5 +1,13 @@
 ---
 
+# wsrep_cluster_size shows if the cluster is redundant. If it is "1" this (last) mysql server must not be restarted!
+- name: Calculate restart restrictions
+  command: mysql -Ns -e "SELECT VARIABLE_VALUE FROM performance_schema.global_status where VARIABLE_NAME = 'wsrep_cluster_size';"
+  register: wsrep_cluster_size
+  ignore_errors: yes # on error the variable will be set to ""
+  listen: "restart percona"
+
 - name: restart percona
   service: name=mysql state=restarted
-  when: not bootstrapping  # skip the restart if a bootstrap is happening
+  when: ( not bootstrapping ) and ( wsrep_cluster_size.stdout != "1" ) # skip the restart if a bootstrap is happening
+  listen: "restart percona"
