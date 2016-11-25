@@ -1,6 +1,15 @@
 ---
 # file: tasks/repo.tml
 
+# this two public key is needed for the percona repository.
+- name: Add gpg public keys for percona - keyserver.ubuntu.com
+  shell: "bash -c 'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9334A25F8507EFA5'"
+  tags: ['gpgkeys']
+
+- name: Add gpg public keys for percona - keys.gnupg.net
+  shell: "bash -c 'sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 8507EFA5'"
+  tags: ['gpgkeys']
+
 - name: Obtaining percona public key
   apt_key: url=http://www.percona.com/downloads/RPM-GPG-KEY-percona
           state=present
