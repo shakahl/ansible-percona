@@ -1,6 +1,6 @@
 {
    "name": "shakahl.ansible-percona",
-   "version": "0.1.8",
+   "version": "0.1.9",
    "description": "Ansible role for installing Percona MySQL Xtradb server",
    "author": "Soma Szelpal <szelpalsoma@gmail.com>",
    "bugs": {
