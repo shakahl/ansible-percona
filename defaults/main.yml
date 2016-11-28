@@ -60,7 +60,6 @@ mysql_mysqldump_max_allowed_packet: '128M'
 mysql_isamchk_key_buffer: '16M'
 
 # InnoDB tuning
-mysql_innodb_file_per_table: 'innodb_file_per_table'
 mysql_innodb_flush_method: 'fdatasync'
 mysql_innodb_buffer_pool_size: '128M'
 mysql_innodb_flush_log_at_trx_commit: 1
